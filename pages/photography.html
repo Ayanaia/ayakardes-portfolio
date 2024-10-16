@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aya Kardes | Portfolio</title>
     <link rel="stylesheet" href="../styles/styles.css" />
+  
   </head>
   <body>
     <header>
@@ -15,19 +16,155 @@
         <ul>
           <li><a href="../index.html">Projects</a></li>
           <li><a href="about.html">About Me</a></li>
-          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
-      <section>
+      <section >
         <h2>Photography</h2>
+        <div class="project-gallery">
+          <div class="project">
+            <h3>A Spark of Hope</h3>
+            <img
+              src="../images/Refugee Centre (34).jpg"
+              alt="A Spark of Hope"
+              class="thumbnail"
+              onclick="openModal('modal1', ['../images/Refugee Centre (34).jpg',
+              '../images/Refugee Centre (28).jpg',
+              '../images/Refugee Centre (31).jpg',
+              '../images/Refugee Centre (27).jpg',
+              '../images/Refugee Centre (35).jpg',
+              '../images/Refugee Centre (38).jpg',
+              ])"
+            />
+            <p class="project-description">This series captures heartfelt moments from multiple visits to a refugee center, where kindness and resilience shine through. I focused on documenting the daily lives of the children, showcasing their experiences, interactions, and the strength they exhibit in the face of adversity. Each photograph reflects their hope and the joy found in their everyday activities.</p>
+
+          </div>
+          <div class="project">
+            <h3>Cultural Heritage</h3>
+            <img
+              src="../images/Ethiopia2.jpg"
+              alt="Cultural Heritage"
+              class="thumbnail"
+              onclick="openModal('modal2', [
+                          '../images/Ethiopia2.jpg', 
+                          '../images/Assyria.jpg', 
+                          '../images/Iraq.jpg',
+                          '../images/India.jpg',
+                          '../images/China2.jpg',
+                          '../images/Europe.jpg'
+                      ])"
+            />
+            <p class="project-description">This project explores the rich cultural heritage of various regions through portraits, highlighting the beauty of traditional attire. I conducted extensive research on different cultural and historical garments, selecting some of my favorites to represent the diversity of ethnicity and style. From the intricate patterns of the Chinese Hanfu to the unique Assyrian jewelry, each piece tells a unique story. Through these portraits, I aim to celebrate the vibrancy of different cultures and the artistry behind their traditional clothing.</p>
+
+          </div>
+          <div class="project">
+            <h3>3D Handmade God of War Axe</h3>
+            <img
+              src="../images/3D_Handmade_God_Of_War_Axe.JPG"
+              alt="3D Handmade God of War Axe"
+              class="thumbnail"
+              onclick="openModal('modal3', ['../images/3D_Handmade_God_Of_War_Axe.JPG',
+              '../images/3D_Handmade_God_Of_War_Axe_.JPG'])"
+            />
+            <p class="project-description">This piece showcases a meticulously handcrafted replica of the iconic Leviathan axe from God of War. Crafted with care, I utilized high-quality clay, a variety of acrylic and spray paints for vibrant details, and genuine leather for the handle. To add an extra touch of realism, I incorporated resin for the gems. Additionally, the axe features 3D printing using PLA, combining traditional artistry with modern technology to create a stunning masterpiece.</p>
+
+          </div>
+        </div>
+
+        <!-- Modal Structures -->
+        <div id="modal1" class="modal">
+          <span class="close" onclick="closeModal('modal1')">&times;</span>
+          <div class="arrow left-arrow" onclick="changeImage('modal1', -1)">
+            &#10094;
+          </div>
+          <div class="arrow right-arrow" onclick="changeImage('modal1', 1)">
+            &#10095;
+          </div>
+          <div id="imgContainer1"></div>
+        </div>
+
+        <div id="modal2" class="modal">
+          <span class="close" onclick="closeModal('modal2')">&times;</span>
+          <div class="arrow left-arrow" onclick="changeImage('modal2', -1)">
+            &#10094;
+          </div>
+          <div class="arrow right-arrow" onclick="changeImage('modal2', 1)">
+            &#10095;
+          </div>
+          <div id="imgContainer2"></div>
+        </div>
+
+        <div id="modal3" class="modal">
+          <span class="close" onclick="closeModal('modal3')">&times;</span>
+          <div class="arrow left-arrow" onclick="changeImage('modal3', -1)">
+            &#10094;
+          </div>
+          <div class="arrow right-arrow" onclick="changeImage('modal3', 1)">
+            &#10095;
+          </div>
+          <div id="imgContainer3"></div>
       </section>
     </main>
 
     <footer>
       <p>&copy; 2024 Aya Kardes. All Rights Reserved.</p>
     </footer>
+
+    <script>
+      let currentIndex = 0; // Keep track of the current image index
+
+      function openModal(modalId, imgArray) {
+        currentIndex = 0; // Reset the index when opening a new modal
+        var modal = document.getElementById(modalId);
+        modal.style.display = "block";
+        var imgContainer = document.getElementById(
+          "imgContainer" + modalId[modalId.length - 1]
+        );
+        imgContainer.innerHTML = ""; // Clear previous images
+
+        // Add the first image
+        const img = document.createElement("img");
+        img.src = imgArray[currentIndex];
+        img.classList.add("modal-content");
+        imgContainer.appendChild(img);
+
+        // Store the images in the modal's dataset for later access
+        modal.dataset.images = JSON.stringify(imgArray);
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+      }
+
+      function changeImage(modalId, direction) {
+        const modal = document.getElementById(modalId);
+        const imgArray = JSON.parse(modal.dataset.images);
+        currentIndex += direction;
+
+        // Loop back if we reach the end or beginning
+        if (currentIndex >= imgArray.length) {
+          currentIndex = 0; // Go to the first image
+        } else if (currentIndex < 0) {
+          currentIndex = imgArray.length - 1; // Go to the last image
+        }
+
+        // Update the image in the modal
+        const imgContainer = document.getElementById(
+          "imgContainer" + modalId[modalId.length - 1]
+        );
+        imgContainer.innerHTML = ""; // Clear previous image
+        const img = document.createElement("img");
+        img.src = imgArray[currentIndex];
+        img.classList.add("modal-content");
+        imgContainer.appendChild(img);
+      }
+        // JavaScript for animation on load
+        window.onload = function () {
+          const aboutSection = document.getElementById("photo-section");
+          aboutSection.classList.add("show"); // Add the show class to animate
+        };
+    </script>
   </body>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aya Kardes | Portfolio</title>
+    <title>Aya Kardes | About Me</title>
     <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body>
@@ -15,19 +15,46 @@
         <ul>
           <li><a href="../index.html">Projects</a></li>
           <li><a href="about.html">About Me</a></li>
-          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
 
-    <main>
-      <section>
-        <h2>About me</h2>
+    <main class="about-main">
+      <section id="about-section">
+        <img src="../images/me.JPG" alt="Aya Kardes" class="about-img" />
+        <!-- Replace with your image -->
+        <div>
+          <h2>About Me</h2>
+          <p class="about-description">
+            Hello! My name is Aya Kardes, and I am passionate about creating
+            engaging digital experiences through photography, web development,
+            and design. My journey in this field has been fulfilling, and I love
+            exploring new technologies and creative avenues.
+          </p>
+          <p class="about-description">
+            I believe in the power of storytelling through visuals, and I strive
+            to bring ideas to life in a way that resonates with people. Whether
+            it's through a captivating photograph or a well-crafted website, my
+            goal is to make a positive impact through my work.
+          </p>
+          <a href="mailto:ayakardes@gmail.com" class="contact-button"
+            >Contact Me</a
+          >
+          <!-- Updated email link -->
+        </div>
       </section>
     </main>
 
     <footer>
       <p>&copy; 2024 Aya Kardes. All Rights Reserved.</p>
     </footer>
+
+    <script>
+      // JavaScript for animation on load
+      window.onload = function () {
+        const aboutSection = document.getElementById("about-section");
+        aboutSection.classList.add("show"); // Add the show class to animate
+      };
+    </script>
   </body>
 </html>

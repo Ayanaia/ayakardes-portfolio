@@ -15,7 +15,6 @@
         <ul>
           <li><a href="../index.html">Projects</a></li>
           <li><a href="about.html">About Me</a></li>
-          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -23,11 +22,123 @@
     <main>
       <section>
         <h2>Web Development</h2>
+        <div class="project-gallery">
+          <!-- Project 1 -->
+          <div class="project">
+            <h3>Laravel NichCom</h3>
+            <img
+              src="../images/laravel.png"
+              alt="Video 1 Description"
+              class="thumbnail"
+              onclick="openVideoModal('video1')"
+            />
+            <p class="project-description">
+              A brief description of the first video.
+            </p>
+          </div>
+          <!-- Project 2 -->
+          <div class="project">
+            <h3>React Travel Planner</h3>
+            <img
+              src="../images/travel.png"
+              alt="Video 2 Description"
+              class="thumbnail"
+              onclick="openVideoModal('video2')"
+            />
+            <p class="project-description">
+              A brief description of the second video.
+            </p>
+          </div>
+          <!-- Project 3 -->
+          <div class="project">
+            <h3>React Webshop</h3>
+            <img
+              src="../images/webshop.png"
+              alt="Video 3 Description"
+              class="thumbnail"
+              onclick="openVideoModal('video3')"
+            />
+            <p class="project-description">
+              A brief description of the third video.
+            </p>
+          </div>
+          <!-- Project 4 -->
+          <div class="project">
+            <h3>Music Player</h3>
+            <img
+              src="../images/music.png"
+              alt="Video 4 Description"
+              class="thumbnail"
+              onclick="openVideoModal('video4')"
+            />
+            <p class="project-description">
+              A brief description of the fourth video.
+            </p>
+          </div>
+        </div>
+
+        <!-- Video Modal Structures -->
+        <div id="video1" class="modal video">
+          <span class="close" onclick="closeVideoModal('video1')">&times;</span>
+          <iframe
+            title="vimeo-player"
+            src="https://player.vimeo.com/video/1020358961?h=b56d6936e3"
+            width="640"
+            height="360"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div id="video2" class="modal video">
+          <span class="close" onclick="closeVideoModal('video2')">&times;</span>
+          <iframe
+            title="vimeo-player"
+            src="https://player.vimeo.com/video/1020359455?h=8a982156fa"
+            width="640"
+            height="360"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div id="video3" class="modal video">
+          <span class="close" onclick="closeVideoModal('video3')">&times;</span>
+          <iframe
+            title="vimeo-player"
+            src="https://player.vimeo.com/video/1020359592?h=7000814781"
+            width="640"
+            height="360"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div id="video4" class="modal video">
+          <span class="close" onclick="closeVideoModal('video4')">&times;</span>
+          <iframe
+            class="video"
+            title="vimeo-player"
+            src="https://player.vimeo.com/video/1020359734?h=540cde5db7"
+            width="640"
+            height="360"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
       </section>
     </main>
 
     <footer>
       <p>&copy; 2024 Aya Kardes. All Rights Reserved.</p>
     </footer>
+
+    <script>
+      function openVideoModal(modalId) {
+        var modal = document.getElementById(modalId);
+        modal.style.display = "flex";
+      }
+
+      function closeVideoModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+      }
+    </script>
   </body>
 </html>
