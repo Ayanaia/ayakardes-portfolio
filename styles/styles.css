@@ -32,10 +32,6 @@ header {
   color: #000;
 }
 
-.header-right {
-  display: flex; /* Show nav on larger screens */
-}
-
 .header-right ul {
   list-style: none;
   display: flex;
@@ -47,23 +43,6 @@ header {
   text-decoration: none;
   color: #000;
   font-size: 16px;
-}
-
-/* Hide the navigation on mobile */
-.hamburger {
-  display: none; /* Hide by default */
-}
-
-/* Hide the navigation on mobile */
-@media (max-width: 768px) {
-  .header-right {
-    display: none; /* Hide by default */
-  }
-
-  .hamburger {
-    display: block; /* Show hamburger icon on mobile */
-    cursor: pointer;
-  }
 }
 
 main {
@@ -115,53 +94,39 @@ main {
   font-size: 14px;
 }
 
-.project-gallery {
-  display: flex;
-  flex-direction: column; /* Stack project items */
-  align-items: center; /* Center items */
-  margin: 20px 0;
-}
-
-.project {
-  width: 90%; /* Full width for mobile */
-  margin-bottom: 20px; /* Space between project items */
-}
-
 footer {
   padding: 20px;
   text-align: center;
   background-color: #fff;
   border-top: 1px solid #ddd;
-  position: relative; /* Change from fixed to relative */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-@media (max-width: 768px) {
-  .header-left {
-    margin-left: 0; /* Adjust margin */
-    text-align: center; /* Center title */
-  }
-
-  .header-right {
-    display: none; /* Hide the nav on small screens */
-  }
-
-  .project-item {
-    width: calc(50% - 20px); /* Adjust width for smaller screens */
-  }
-
-  h2 {
-    font-size: 28px;
-  }
+h2 {
+  font-size: 24px;
+  margin-bottom: 3rem;
 }
 
-@media (max-width: 480px) {
-  .project-item {
-    width: 100%; /* Full width for mobile */
-  }
+/* Photography page */
+/* Web page */
+/* UX page */
 
-  h2 {
-    font-size: 24px; /* Smaller font size for mobile */
-  }
+/* Thumbnail Styles */
+.thumbnail {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+/* Darken effect on hover */
+.thumbnail:hover {
+  filter: brightness(70%); /* Darken the image on hover */
 }
 
 /* Modal Styles */
@@ -175,9 +140,15 @@ footer {
   width: 100%;
   height: 100%;
   overflow: auto;
+  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.9);
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+iframe {
+  width: 90vw;
+  height: 90vh;
 }
 
 .modal-content {
@@ -189,64 +160,182 @@ footer {
   height: auto;
   object-fit: contain;
 }
-
-/* Thumbnail Styles */
-.thumbnail {
-  width: 100%; /* Full width for thumbnails */
-  max-width: 300px; /* Adjust max width */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover;
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
   cursor: pointer;
-  border-radius: 5px;
-  margin: 10px;
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #f1f1f1;
+  font-size: 40px;
+  cursor: pointer;
+}
+.left-arrow {
+  left: 20px;
+}
+.right-arrow {
+  right: 20px;
 }
 
-.thumbnail:hover {
-  filter: brightness(70%); /* Darken on hover */
+/* Project Gallery Styles */
+.project-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 20px 0;
+}
+.project {
+  text-align: center;
+  padding: 10px;
+  width: calc(33% - 20px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin: 10px 10px;
 }
 
-/* About Page Specific Styles */
+/* Scale effect on hover */
+.project:hover {
+  transform: scale(1.02);
+}
+
+/* Description Styles */
+.project-description {
+  font-size: 16px;
+  color: #555;
+  margin-top: 10px;
+  padding: 0 10px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Description Styles */
+.project-description {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+  padding: 0 10px;
+}
+
+/* End of pages  */
+
+/* About page */
 .about-main {
   margin-top: 4rem;
   display: flex;
-  flex-direction: column; /* Stack items */
-  align-items: center; /* Center items */
-  padding: 40px 20px;
+  justify-content: center; /* Center the section */
+  padding: 40px 20px; /* Add padding around the main content */
 }
 
 #about-section {
-  display: flex;
-  flex-direction: column; /* Stack image and text */
-  align-items: center; /* Center items */
-  max-width: 800px;
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Center items vertically */
+  max-width: 800px; /* Limit width for readability */
+  opacity: 0; /* Initially hidden for animation */
+  transform: translateY(20px); /* Start below */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Animation */
+}
+
+#about-section.show {
+  opacity: 1; /* Show section */
+  transform: translateY(0); /* Move to original position */
 }
 
 .about-img {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 50%;
-  margin-bottom: 20px;
+  width: 100%; /* Full width of the card */
+  max-width: 300px; /* Set max width for the image */
+  border-radius: 50%; /* Circular image */
+  margin-right: 20px; /* Space between image and text */
 }
 
 .about-description {
-  text-align: center; /* Center text */
+  flex: 1; /* Allow text to take the remaining space */
   font-size: 18px;
-  line-height: 1.5;
-  margin-bottom: 20px;
+  color: #333; /* Dark text for contrast */
+  line-height: 1.5; /* Increase line height for readability */
+  margin-bottom: 20px; /* Space below description */
 }
 
 .contact-button {
   color: #b06a8f;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 5px; /* Rounded corners */
   cursor: pointer;
-  text-decoration: none;
-  font-size: 16px;
-  transition: background-color 0.3s;
+  text-decoration: none; /* Remove underline */
+  font-size: 16px; /* Font size for button */
+  transition: background-color 0.3s; /* Transition for hover effect */
 }
 
 .contact-button:hover {
-  background-color: #b06a8f;
+  background-color: #b06a8f; /* Darker shade on hover */
   color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .project-item,
+  .project {
+    width: 100%; /* Full width for mobile */
+    margin: 10px 0; /* Add margin for spacing */
+  }
+
+  .header-right ul {
+    flex-direction: column; /* Stack navigation vertically */
+    align-items: flex-start; /* Align items to the start */
+    margin-right: 0; /* Remove right margin */
+  }
+
+  .header-left h1 {
+    margin-left: 0; /* Center logo */
+  }
+
+  /* Adjust the thumbnail for mobile */
+  .thumbnail {
+    width: 100%; /* Full width for thumbnails */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  /* Modal Styles for images */
+  .modal {
+    padding: 10px; /* Adjust padding */
+  }
+
+  .modal-content {
+    width: 100%; /* Full width for mobile */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  /* Button styles */
+  .contact-button {
+    width: 100%; /* Full width for buttons */
+  }
+  #about-section {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center items */
+    padding: 20px; /* Adjust padding */
+  }
+
+  .about-description {
+    padding: 0 10px; /* Less padding on smaller screens */
+  }
+
+  .about-img {
+    max-width: 80%; /* Allow image to scale down on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .header-right ul {
+    flex-direction: column; /* Stack navigation vertically */
+  }
+  .about-img {
+    max-width: 100%; /* Full width for images on mobile */
+  }
 }
