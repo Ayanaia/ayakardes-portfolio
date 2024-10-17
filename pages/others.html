@@ -5,12 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aya Kardes | Portfolio</title>
     <link rel="stylesheet" href="../styles/styles.css" />
-  
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Borel&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
       <div class="header-left">
-        <h1><a href="../index.html">Aya Kardes</a></h1>
+        <h1>
+          <a
+            href="../index.html"
+            style="
+              font-family: 'Borel', cursive;
+              font-weight: 400;
+              font-style: normal;
+              color: #b06a8f;
+            "
+            >Aya Kardes</a
+          >
+        </h1>
       </div>
       <nav class="header-right">
         <ul>
@@ -21,9 +37,47 @@
     </header>
 
     <main>
-      <section >
+      <section>
         <h2>Photography</h2>
         <div class="project-gallery">
+          <div class="project">
+            <h3>Meet Me Next Winter</h3>
+            <img
+              src="../images/stopmotion.png"
+              alt="Stop Motion: Meet Me Next Winter"
+              class="thumbnail"
+              onclick="openVideoModal('video')"
+            />
+            <p class="project-description">
+              This is my first-ever stop motion video, created for a class
+              project. I’m proud to say it was nominated for one of the best at
+              the Artevelde Film Festival. In this project, I handcrafted all
+              the props, including the stop motion doll, which I sculpted from
+              wires and clay. This experience not only sparked my passion for
+              animation but also deepened my appreciation for the artistry and
+              effort behind stop motion.
+            </p>
+          </div>
+          <div class="project">
+            <h3>3D Handmade God of War Axe</h3>
+            <img
+              src="../images/3D_Handmade_God_Of_War_Axe.JPG"
+              alt="3D Handmade God of War Axe"
+              class="thumbnail"
+              onclick="openModal('modal3', ['../images/3D_Handmade_God_Of_War_Axe.JPG',
+              '../images/3D_Handmade_God_Of_War_Axe_.JPG'])"
+            />
+            <p class="project-description">
+              This piece showcases a meticulously handcrafted replica of the
+              iconic Leviathan axe from God of War. Crafted with care, I
+              utilized high-quality clay, a variety of acrylic and spray paints
+              for vibrant details, and genuine leather for the handle. To add an
+              extra touch of realism, I incorporated resin for the gems.
+              Additionally, the axe features 3D printing using PLA, combining
+              traditional artistry with modern technology to create a stunning
+              masterpiece.
+            </p>
+          </div>
           <div class="project">
             <h3>A Spark of Hope</h3>
             <img
@@ -38,8 +92,14 @@
               '../images/Refugee Centre (38).jpg',
               ])"
             />
-            <p class="project-description">This series captures heartfelt moments from multiple visits to a refugee center, where kindness and resilience shine through. I focused on documenting the daily lives of the children, showcasing their experiences, interactions, and the strength they exhibit in the face of adversity. Each photograph reflects their hope and the joy found in their everyday activities.</p>
-
+            <p class="project-description">
+              This series captures heartfelt moments from multiple visits to a
+              refugee center, where kindness and resilience shine through. I
+              focused on documenting the daily lives of the children, showcasing
+              their experiences, interactions, and the strength they exhibit in
+              the face of adversity. Each photograph reflects their hope and the
+              joy found in their everyday activities.
+            </p>
           </div>
           <div class="project">
             <h3>Cultural Heritage</h3>
@@ -56,20 +116,17 @@
                           '../images/Europe.jpg'
                       ])"
             />
-            <p class="project-description">This project explores the rich cultural heritage of various regions through portraits, highlighting the beauty of traditional attire. I conducted extensive research on different cultural and historical garments, selecting some of my favorites to represent the diversity of ethnicity and style. From the intricate patterns of the Chinese Hanfu to the unique Assyrian jewelry, each piece tells a unique story. Through these portraits, I aim to celebrate the vibrancy of different cultures and the artistry behind their traditional clothing.</p>
-
-          </div>
-          <div class="project">
-            <h3>3D Handmade God of War Axe</h3>
-            <img
-              src="../images/3D_Handmade_God_Of_War_Axe.JPG"
-              alt="3D Handmade God of War Axe"
-              class="thumbnail"
-              onclick="openModal('modal3', ['../images/3D_Handmade_God_Of_War_Axe.JPG',
-              '../images/3D_Handmade_God_Of_War_Axe_.JPG'])"
-            />
-            <p class="project-description">This piece showcases a meticulously handcrafted replica of the iconic Leviathan axe from God of War. Crafted with care, I utilized high-quality clay, a variety of acrylic and spray paints for vibrant details, and genuine leather for the handle. To add an extra touch of realism, I incorporated resin for the gems. Additionally, the axe features 3D printing using PLA, combining traditional artistry with modern technology to create a stunning masterpiece.</p>
-
+            <p class="project-description">
+              This project explores the rich cultural heritage of various
+              regions through portraits, highlighting the beauty of traditional
+              attire. I conducted extensive research on different cultural and
+              historical garments, selecting some of my favorites to represent
+              the diversity of ethnicity and style. From the intricate patterns
+              of the Chinese Hanfu to the unique Assyrian jewelry, each piece
+              tells a unique story. Through these portraits, I aim to celebrate
+              the vibrancy of different cultures and the artistry behind their
+              traditional clothing.
+            </p>
           </div>
         </div>
 
@@ -105,6 +162,19 @@
             &#10095;
           </div>
           <div id="imgContainer3"></div>
+        </div>
+
+        <div id="video" class="modal video">
+          <span class="close" onclick="closeVideoModal('video')">&times;</span>
+          <iframe
+            title="vimeo-player"
+            src="https://player.vimeo.com/video/717274887?h=e86b93475d"
+            width="640"
+            height="360"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
       </section>
     </main>
 
@@ -160,11 +230,21 @@
         img.classList.add("modal-content");
         imgContainer.appendChild(img);
       }
-        // JavaScript for animation on load
-        window.onload = function () {
-          const aboutSection = document.getElementById("photo-section");
-          aboutSection.classList.add("show"); // Add the show class to animate
-        };
+      // JavaScript for animation on load
+      window.onload = function () {
+        const aboutSection = document.getElementById("photo-section");
+        aboutSection.classList.add("show"); // Add the show class to animate
+      };
+
+      // Video functions
+      function openVideoModal(modalId) {
+        var modal = document.getElementById(modalId);
+        modal.style.display = "flex"; // Show the video modal
+      }
+
+      function closeVideoModal(modalId) {
+        document.getElementById(modalId).style.display = "none"; // Hide the video modal
+      }
     </script>
   </body>
 </html>
